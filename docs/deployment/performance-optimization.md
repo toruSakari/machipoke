@@ -97,7 +97,7 @@ function App() {
         rollupOptions: {
           output: {
             manualChunks: {
-              react: ['react', 'react-dom', 'react-router-dom'],
+              react: ['react', 'react-dom', 'react-router'],
               mapbox: ['mapbox-gl'],
               ui: ['@/components/ui'],
             },
@@ -812,7 +812,7 @@ export const PerformanceTracker: React.FC<PerformanceTrackerProps> = ({
 
 このガイドを参考に、マチポケアプリケーションのパフォーマンスを継続的に改善し、ユーザーに優れた体験を提供してください。
 import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router/server';
 import { App } from './App';
 
 export function render(url: string, context: any) {
@@ -828,7 +828,7 @@ export function render(url: string, context: any) {
 // entry-client.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import { App } from './App';
 
 ReactDOM.hydrateRoot(
@@ -868,7 +868,7 @@ function HomePage() {
 
 ```jsx
 import { useCallback, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 
 function NavLink({ to, children, prefetch = false }) {
   const prefetchLink = useCallback(() => {

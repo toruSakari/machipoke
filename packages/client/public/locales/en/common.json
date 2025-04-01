@@ -1,0 +1,38 @@
+{
+  "appName": "Machipoke",
+  "tagline": "Share local hidden gems with the world",
+  "home": "Home",
+  "map": "Map",
+  "spots": "Spots",
+  "profile": "Profile",
+  "login": "Login",
+  "signup": "Sign up",
+  "logout": "Logout",
+  "search": "Search",
+  "categories": {
+    "food": "Food",
+    "nature": "Nature",
+    "history": "History",
+    "culture": "Culture",
+    "activity": "Activities"
+  },
+  "spot": {
+    "add": "Add Spot",
+    "edit": "Edit",
+    "delete": "Delete",
+    "details": "Details",
+    "bestSeason": "Best Season",
+    "bestTime": "Best Time",
+    "hiddenLevel": "Hidden Level",
+    "experience": "Special Experience",
+    "comments": "Comments",
+    "addComment": "Add Comment"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "back": "Back"
+  }
+}

@@ -248,7 +248,7 @@ describe('Spot', () => {
 // src/routes/spot/[id]/page.test.tsx
 import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SpotDetailPage } from './page';
 import { useSpot } from '@/hooks/useSpot';

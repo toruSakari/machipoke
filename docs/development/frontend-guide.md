@@ -154,7 +154,7 @@ React Router v7を使用したルーティング設定：
 
 ```tsx
 // src/routes/index.tsx
-import { createBrowserRouter, createMemoryRouter } from 'react-router-dom';
+import { createBrowserRouter, createMemoryRouter } from 'react-router';
 import { RootLayout } from '@/layouts/RootLayout';
 import { HomePage } from './home/page';
 import { SpotDetailPage } from './spot/[id]/page';
@@ -270,7 +270,7 @@ export const useSpot = (id: string) => {
 
 ```tsx
 // src/routes/spot/[id]/page.tsx
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useSpot } from '@/hooks/useSpot';
 import { SpotDetail } from '@/components/spots/SpotDetail';
 import { ErrorMessage } from '@/components/common/ErrorMessage';
@@ -500,7 +500,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { createServerRouter } from '@/routes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router/server';
 import { createContext } from './context';
 
 export function render(url: string, context: any) {

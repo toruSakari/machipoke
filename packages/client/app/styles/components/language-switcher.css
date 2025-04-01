@@ -1,0 +1,28 @@
+/* Language Switcher スタイル */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-switcher .lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.language-switcher .lang-btn:hover {
+  background-color: #f7fafc;
+}
+
+.language-switcher .lang-btn.active {
+  background-color: #e2e8f0;
+  font-weight: bold;
+}

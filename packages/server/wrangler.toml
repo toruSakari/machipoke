@@ -1,0 +1,42 @@
+name = "machipoke-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Cloudflareの環境変数設定
+# .dev.vars または Cloudflare Dashboard で設定した環境変数が利用可能
+
+# 本番環境設定
+[env.production]
+# D1データベース設定
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "machipoke-db"
+database_id = "" # Cloudflare D1設定後に記入
+
+# KVストア設定
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "" # Cloudflare KV設定後に記入
+
+# R2バケット設定
+[[env.production.r2_buckets]]
+binding = "IMAGES"
+bucket_name = "machipoke-images"
+
+# 開発環境設定
+[env.development]
+# ローカル開発用のD1データベース設定
+[[env.development.d1_databases]]
+binding = "DB"
+database_name = "machipoke-db-dev"
+database_id = "machipoke-db-dev"
+
+# ローカル開発用のKVストア設定
+[[env.development.kv_namespaces]]
+binding = "CACHE"
+id = "machipoke-cache-dev"
+
+# ローカル開発用のR2バケット設定
+[[env.development.r2_buckets]]
+binding = "IMAGES"
+bucket_name = "machipoke-images-dev"

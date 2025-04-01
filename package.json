@@ -1,0 +1,17 @@
+{
+  "name": "machipoke",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check": "biome check --apply .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3",
+    "turbo": "^1.10.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "npm@10.2.3"
+}

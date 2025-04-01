@@ -1,0 +1,38 @@
+{
+  "appName": "マチポケ",
+  "tagline": "地元の人だけが知る場所を共有するプラットフォーム",
+  "home": "ホーム",
+  "map": "マップ",
+  "spots": "スポット",
+  "profile": "プロフィール",
+  "login": "ログイン",
+  "signup": "新規登録",
+  "logout": "ログアウト",
+  "search": "検索",
+  "categories": {
+    "food": "グルメ",
+    "nature": "自然",
+    "history": "歴史",
+    "culture": "文化",
+    "activity": "アクティビティ"
+  },
+  "spot": {
+    "add": "スポットを追加",
+    "edit": "編集",
+    "delete": "削除",
+    "details": "詳細",
+    "bestSeason": "ベストシーズン",
+    "bestTime": "おすすめの時間帯",
+    "hiddenLevel": "穴場度合い",
+    "experience": "特別な体験",
+    "comments": "コメント",
+    "addComment": "コメントを追加"
+  },
+  "actions": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "submit": "送信",
+    "confirm": "確認",
+    "back": "戻る"
+  }
+}
