@@ -1,14 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useParams, useNavigate, Link, useSubmit, useActionData } from 'react-router';
-import {
-  MapPin,
-  Save,
-  ArrowLeft,
-  Upload,
-  Camera,
-  AlertCircle,
-  X,
-} from 'lucide-react';
+import { MapPin, Save, ArrowLeft, Upload, Camera, AlertCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -20,18 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '@/components/ui/alert';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import type { Spot } from '@/types/spot';
 
 const LocationPicker = lazy(() => import('@/components/maps/LocationPicker'));
@@ -44,7 +26,7 @@ export default function SpotEditPage({
   const navigate = useNavigate();
   const submit = useSubmit();
   const actionData = useActionData() as { errors?: Record<string, string> } | undefined;
-  
+
   const [formData, setFormData] = useState({
     id: spot.id,
     name: spot.name,
@@ -77,7 +59,7 @@ export default function SpotEditPage({
   // フォーム送信ハンドラー
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // クライアントサイドのバリデーション
     const validationErrors: Record<string, string> = {};
     if (!formData.name.trim()) validationErrors.name = 'スポット名は必須です';
@@ -85,7 +67,7 @@ export default function SpotEditPage({
     if (!formData.category.trim()) validationErrors.category = 'カテゴリは必須です';
     if (!formData.location.trim()) validationErrors.location = '場所は必須です';
     if (!formData.address.trim()) validationErrors.address = '住所は必須です';
-    
+
     const lat = parseFloat(formData.latitude);
     const lng = parseFloat(formData.longitude);
     if (isNaN(lat) || isNaN(lng)) {
@@ -112,11 +94,11 @@ export default function SpotEditPage({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // エラーをクリア
     if (errors[name]) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -126,11 +108,11 @@ export default function SpotEditPage({
 
   // ドロップダウン変更ハンドラー
   const handleSelectChange = (name: string, value: string) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // エラーをクリア
     if (errors[name]) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -140,15 +122,15 @@ export default function SpotEditPage({
 
   // 位置情報の更新ハンドラー
   const handleLocationUpdate = (lat: number, lng: number) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       latitude: lat.toString(),
       longitude: lng.toString(),
     }));
-    
+
     // 座標エラーをクリア
     if (errors.coordinates) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors.coordinates;
         return newErrors;
@@ -163,8 +145,8 @@ export default function SpotEditPage({
     // モックのための遅延
     setTimeout(() => {
       const newImage = 'https://source.unsplash.com/random/800x600/?japan';
-      setSelectedImages(prev => [...prev, newImage]);
-      setFormData(prev => ({
+      setSelectedImages((prev) => [...prev, newImage]);
+      setFormData((prev) => ({
         ...prev,
         images: [...prev.images, newImage],
       }));
@@ -174,13 +156,13 @@ export default function SpotEditPage({
 
   // 画像削除ハンドラー
   const handleRemoveImage = (index: number) => {
-    setSelectedImages(prev => prev.filter((_, i) => i !== index));
-    setFormData(prev => ({
+    setSelectedImages((prev) => prev.filter((_, i) => i !== index));
+    setFormData((prev) => ({
       ...prev,
       images: prev.images.filter((_, i) => i !== index),
     }));
     if (activeImageIndex >= index && activeImageIndex > 0) {
-      setActiveImageIndex(prev => prev - 1);
+      setActiveImageIndex((prev) => prev - 1);
     }
   };
 
@@ -194,9 +176,7 @@ export default function SpotEditPage({
           </Link>
         </Button>
         <h1 className="text-3xl font-bold">スポットを編集</h1>
-        <p className="mt-2 text-gray-600">
-          スポット情報を更新して、より良い情報を共有しましょう。
-        </p>
+        <p className="mt-2 text-gray-600">スポット情報を更新して、より良い情報を共有しましょう。</p>
       </div>
 
       {/* エラーがある場合に表示 */}
@@ -212,7 +192,7 @@ export default function SpotEditPage({
 
       <form onSubmit={handleSubmit} className="space-y-8">
         <input type="hidden" name="id" value={formData.id} />
-        
+
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* フォームフィールド */}
           <div className="md:col-span-2 space-y-6">
@@ -244,8 +224,8 @@ export default function SpotEditPage({
                     defaultValue={formData.category}
                     onValueChange={(value) => handleSelectChange('category', value)}
                   >
-                    <SelectTrigger 
-                      id="category" 
+                    <SelectTrigger
+                      id="category"
                       name="category"
                       className={errors.category ? 'border-destructive' : ''}
                     >
@@ -403,9 +383,7 @@ export default function SpotEditPage({
             <Card>
               <CardHeader>
                 <CardTitle>追加情報</CardTitle>
-                <CardDescription>
-                  スポットに関する追加情報を入力してください。
-                </CardDescription>
+                <CardDescription>スポットに関する追加情報を入力してください。</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -491,9 +469,7 @@ export default function SpotEditPage({
             <Card>
               <CardHeader>
                 <CardTitle>画像</CardTitle>
-                <CardDescription>
-                  スポットの画像をアップロードしてください。
-                </CardDescription>
+                <CardDescription>スポットの画像をアップロードしてください。</CardDescription>
               </CardHeader>
               <CardContent>
                 {/* メイン画像表示 */}

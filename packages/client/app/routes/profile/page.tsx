@@ -260,7 +260,7 @@ export default function ProfilePage() {
               <div className="flex space-x-2">
                 <span className="text-sm text-gray-500">{mockPostedSpots.length} 件</span>
                 <Button size="sm">
-                  <Link to="/spots/new" className='flex items-center'>
+                  <Link to="/spots/new" className="flex items-center">
                     <MapPin className="mr-2 h-4 w-4" />
                     新規スポットを投稿
                   </Link>
@@ -307,7 +307,7 @@ export default function ProfilePage() {
                       <p className="mt-2 text-sm text-gray-600 line-clamp-2">{spot.description}</p>
                       <div className="mt-4 flex justify-end space-x-2">
                         <Button variant="outline" size="sm">
-                          <Link to={`/spots/${spot.id}/edit`}>編集</Link> 
+                          <Link to={`/spots/${spot.id}/edit`}>編集</Link>
                         </Button>
                         <Button asChild variant="outline" size="sm">
                           <Link to={`/spots/${spot.id}`}>詳細を見る</Link>

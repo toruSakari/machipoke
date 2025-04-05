@@ -1,15 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate, Link, useSubmit, useActionData } from 'react-router';
-import {
-  MapPin,
-  Save,
-  ArrowLeft,
-  Upload,
-  Camera,
-  AlertCircle,
-  X,
-  Plus,
-} from 'lucide-react';
+import { MapPin, Save, ArrowLeft, Upload, Camera, AlertCircle, X, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,18 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '@/components/ui/alert';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const LocationPicker = lazy(() => import('@/components/maps/LocationPicker'));
 
@@ -47,7 +28,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
   const navigate = useNavigate();
   const submit = useSubmit();
   const actionData = useActionData() as { errors?: Record<string, string> } | undefined;
-  
+
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -85,7 +66,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setFormData(prev => ({
+          setFormData((prev) => ({
             ...prev,
             latitude: latitude.toString(),
             longitude: longitude.toString(),
@@ -101,7 +82,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
   // フォーム送信ハンドラー
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // クライアントサイドのバリデーション
     const validationErrors: Record<string, string> = {};
     if (!formData.name.trim()) validationErrors.name = 'スポット名は必須です';
@@ -109,7 +90,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
     if (!formData.category.trim()) validationErrors.category = 'カテゴリは必須です';
     if (!formData.location.trim()) validationErrors.location = '場所は必須です';
     if (!formData.address.trim()) validationErrors.address = '住所は必須です';
-    
+
     const lat = parseFloat(formData.latitude);
     const lng = parseFloat(formData.longitude);
     if (isNaN(lat) || isNaN(lng)) {
@@ -137,7 +118,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
     if (selectedImages.length > 0) {
       formDataObj.set('imageUrl', selectedImages[0]);
     }
-    
+
     submit(formDataObj, { method: 'post' });
   };
 
@@ -146,11 +127,11 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // エラーをクリア
     if (errors[name]) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -160,11 +141,11 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
 
   // ドロップダウン変更ハンドラー
   const handleSelectChange = (name: string, value: string) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // エラーをクリア
     if (errors[name]) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -174,15 +155,15 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
 
   // 位置情報の更新ハンドラー
   const handleLocationUpdate = (lat: number, lng: number) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       latitude: lat.toString(),
       longitude: lng.toString(),
     }));
-    
+
     // 座標エラーをクリア
     if (errors.coordinates) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors.coordinates;
         return newErrors;
@@ -197,12 +178,12 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
     // モックのための遅延
     setTimeout(() => {
       const newImage = 'https://source.unsplash.com/random/800x600/?japan';
-      setSelectedImages(prev => [...prev, newImage]);
+      setSelectedImages((prev) => [...prev, newImage]);
       setUploading(false);
-      
+
       // イメージエラーをクリア
       if (errors.images) {
-        setErrors(prev => {
+        setErrors((prev) => {
           const newErrors = { ...prev };
           delete newErrors.images;
           return newErrors;
@@ -213,14 +194,14 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
 
   // 画像削除ハンドラー
   const handleRemoveImage = (index: number) => {
-    setSelectedImages(prev => prev.filter((_, i) => i !== index));
+    setSelectedImages((prev) => prev.filter((_, i) => i !== index));
     if (activeImageIndex >= index && activeImageIndex > 0) {
-      setActiveImageIndex(prev => prev - 1);
+      setActiveImageIndex((prev) => prev - 1);
     }
-    
+
     // 画像がなくなったらエラーを追加
     if (selectedImages.length <= 1) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
         images: '少なくとも1枚の画像をアップロードしてください',
       }));
@@ -286,8 +267,8 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
                     value={formData.category}
                     onValueChange={(value) => handleSelectChange('category', value)}
                   >
-                    <SelectTrigger 
-                      id="category" 
+                    <SelectTrigger
+                      id="category"
                       name="category"
                       className={errors.category ? 'border-destructive' : ''}
                     >
@@ -354,10 +335,10 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-end">
-                  <Button 
-                    type="button" 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
                     onClick={getUserLocation}
                     disabled={usedGeolocation}
                   >
@@ -365,7 +346,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
                     現在地を使用
                   </Button>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="location" className={errors.location ? 'text-destructive' : ''}>
                     場所 (地域) <span className="text-destructive">*</span>
@@ -460,9 +441,7 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
             <Card>
               <CardHeader>
                 <CardTitle>追加情報</CardTitle>
-                <CardDescription>
-                  スポットに関する追加情報を入力してください。
-                </CardDescription>
+                <CardDescription>スポットに関する追加情報を入力してください。</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -547,7 +526,9 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
             {/* 画像アップロード */}
             <Card>
               <CardHeader>
-                <CardTitle>画像 <span className="text-destructive">*</span></CardTitle>
+                <CardTitle>
+                  画像 <span className="text-destructive">*</span>
+                </CardTitle>
                 <CardDescription>
                   スポットの画像をアップロードしてください。少なくとも1枚は必要です。
                 </CardDescription>
@@ -663,16 +644,16 @@ export default function SpotCreatePage({ defaultLocation }: SpotCreatePageProps)
             </Card>
 
             {/* 送信ボタン */}
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               size="lg"
               disabled={uploading || Object.keys(errors).length > 0}
             >
               <Plus className="mr-2 h-5 w-5" />
               スポットを登録する
             </Button>
-            
+
             <p className="text-center text-xs text-gray-500">
               <span className="text-destructive">*</span> のついた項目は必須です
             </p>

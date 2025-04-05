@@ -19,6 +19,18 @@
       }
     }
   },
+  "files": {
+    "ignore": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/out/**",
+      "**/.turbo/**",
+      "**/.next/**",
+      "**/.vercel/**",
+      "**/.output/**"
+    ]
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
@@ -28,7 +40,7 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "trailingComma": "es5",
+      "trailingCommas": "es5",
       "semicolons": "always"
     }
   }

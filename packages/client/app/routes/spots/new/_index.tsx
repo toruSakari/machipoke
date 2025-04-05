@@ -22,7 +22,7 @@ export function loader({ request, context }: Route.LoaderArgs) {
     defaultLocation: {
       latitude: 35.6895,
       longitude: 139.6917,
-    }
+    },
   };
 }
 
@@ -46,8 +46,8 @@ export async function action({ request }: Route.ActionArgs) {
     bestSeason: formData.get('bestSeason') as string,
     bestTime: formData.get('bestTime') as string,
     tips: formData.get('tips') as string,
-    imageUrl: formData.get('imageUrl') as string || '',
-    images: JSON.parse(formData.get('images') as string || '[]'),
+    imageUrl: (formData.get('imageUrl') as string) || '',
+    images: JSON.parse((formData.get('images') as string) || '[]'),
   };
 
   // バリデーション
