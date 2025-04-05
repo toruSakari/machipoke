@@ -1,4 +1,4 @@
-import SpotDetailPage from '@/routes/spot/[id]/page';
+import SpotDetailPage from '@/routes/spots/$id/page';
 import type { Route } from './+types/_index';
 import { data } from 'react-router';
 import type { Spot } from '@/types/spot';

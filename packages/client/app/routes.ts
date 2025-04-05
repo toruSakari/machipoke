@@ -4,7 +4,9 @@ export default [
   layout('./layouts/RootLayout.tsx', [
     index('./routes/home/_index.tsx'),
     route('/spots', './routes/spots/_index.tsx'),
+    route('/spots/new', './routes/spots/new/_index.tsx'),
     route('/spots/:id', './routes/spots/$id/_index.tsx'),
+    route('/spots/:id/edit', './routes/spots/$id/edit/_index.tsx'),
     route('/map', './routes/map/_index.tsx'),
     route('/profile', './routes/profile/_index.tsx'),
     route('/auth', './routes/auth/_index.tsx'),

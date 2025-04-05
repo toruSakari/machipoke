@@ -1,8 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from 'react-router';
 import ErrorPage from '@/routes/error-page';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-
-import type { Route } from './+types/root';
 import './styles/app.css';
 
 export function links() {

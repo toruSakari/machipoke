@@ -1,3 +1,3 @@
-declare module 'react-dom/server.browser' {
+declare module 'react-dom/server.edge' {
   export * from 'react-dom/server';
 }

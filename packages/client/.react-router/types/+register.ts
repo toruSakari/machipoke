@@ -1,21 +1,25 @@
-import 'react-router';
+import "react-router";
 
-declare module 'react-router' {
+declare module "react-router" {
   interface Register {
     params: Params;
   }
 }
 
 type Params = {
-  '/': {};
-  '/spots': {};
-  '/spots/:id': {
-    id: string;
+  "/": {};
+  "/spots": {};
+  "/spots/new": {};
+  "/spots/:id": {
+    "id": string;
   };
-  '/map': {};
-  '/profile': {};
-  '/auth': {};
-  '/about': {};
-  '/terms': {};
-  '/privacy': {};
+  "/spots/:id/edit": {
+    "id": string;
+  };
+  "/map": {};
+  "/profile": {};
+  "/auth": {};
+  "/about": {};
+  "/terms": {};
+  "/privacy": {};
 };

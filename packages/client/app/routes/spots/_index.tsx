@@ -1,4 +1,4 @@
-import SpotPage from '@/routes/spot/page';
+import SpotPage from '@/routes/spots/page';
 import type { Route } from './+types/_index';
 
 export function meta({}: Route.MetaArgs) {

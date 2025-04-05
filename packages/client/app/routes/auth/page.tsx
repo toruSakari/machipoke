@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -285,13 +285,13 @@ export default function AuthPage() {
               />
               <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                 <span>
-                  <a href="#" className="text-primary hover:underline">
+                  <Link to="/terms" className="text-primary hover:underline">
                     利用規約
-                  </a>
+                  </Link>
                   と
-                  <a href="#" className="text-primary hover:underline">
+                  <Link to="/privacy" className="text-primary hover:underline">
                     プライバシーポリシー
-                  </a>
+                  </Link>
                   に同意します
                 </span>
               </label>

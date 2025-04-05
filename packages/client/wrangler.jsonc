@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "react-router-app",
+  "name": "machipoke",
   "compatibility_date": "2025-02-24",
   "main": "./workers/app.ts",
   "assets": {},
